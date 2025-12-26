@@ -9,6 +9,7 @@ const ENV_CONFIG = {
     PG_DB: process.env.PG_DB,
     PG_USER: process.env.PG_USER,
     PG_PASSWORD: process.env.PG_PASSWORD,
+    DATABASE_URL: process.env.DATABASE_URL
 };
 
 const constant = {

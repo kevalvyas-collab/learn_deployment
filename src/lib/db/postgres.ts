@@ -5,12 +5,16 @@ class PostgresHelper {
     private client: Pool;
     constructor() {
         this.client = new Pool({
-            host: constants.ENV_CONFIG.PG_HOST,
-            database: constants.ENV_CONFIG.PG_DB,
-            user: constants.ENV_CONFIG.PG_USER,
-            password: constants.ENV_CONFIG.PG_PASSWORD,
-            port: constants.ENV_CONFIG.PG_PORT,
+            connectionString: constants.ENV_CONFIG.DATABASE_URL,
+            ssl: { rejectUnauthorized: false }
         });
+        // this.client = new Pool({
+        //     host: constants.ENV_CONFIG.PG_HOST,
+        //     database: constants.ENV_CONFIG.PG_DB,
+        //     user: constants.ENV_CONFIG.PG_USER,
+        //     password: constants.ENV_CONFIG.PG_PASSWORD,
+        //     port: constants.ENV_CONFIG.PG_PORT,
+        // });
     }
 
     public readQuery(dbQuery: string, params?: any[]): Promise<any[]> {
