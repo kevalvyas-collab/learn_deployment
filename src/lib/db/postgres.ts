@@ -1,6 +1,5 @@
 import { Pool } from 'pg';
 import constants from "../constant";
-console.log('all', constants);
 
 class PostgresHelper {
     private client: Pool;

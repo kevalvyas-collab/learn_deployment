@@ -1,7 +1,8 @@
-import { Request, Response } from "express";
+import { Request, response, Response } from "express";
 import bcrypt from 'bcrypt';
 import { Jwt } from "jsonwebtoken";
 import postgresHelper from "../lib/db/postgres";
+import responseDispatcher from "../lib/response-dispatcher";
 
 
 class CustomerController {
@@ -14,6 +15,8 @@ class CustomerController {
             const insertQuery = `insert into app_users(email, password) values($1, $2)`;
 
             await postgresHelper.writeQuery(insertQuery, [email, hash]);
+
+            responseDispatcher.dispatch(res, `This email are successfully register`);
 
 
         } catch (error) {
